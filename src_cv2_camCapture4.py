@@ -10,17 +10,20 @@ while(cap.isOpened()):  # check !
 
     if ret: # check ! (some webcam's need a "warmup")
         # our operation on frame come here
+        #gray = frame
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         #th = cv2.threshold(gray,127,255,cv2.THRESH_BINARY)
 
-        th = cv2.adaptiveThreshold(gray,300,cv2.ADAPTIVE_THRESH_MEAN_C,\
-                    cv2.THRESH_BINARY,11,2)
-
-        #th = cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,\
+        #th = cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_MEAN_C,\
                     #cv2.THRESH_BINARY,11,2)
 
+        th = cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,\
+                    cv2.THRESH_BINARY,71,11)
+
         #th = cv2.threshold(gray,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+
+        #th = cv2.threshold(gray,0,255,cv2.THRESH_OTSU)
 
         # Display the resulting frame
         cv2.imshow('frame', th)
@@ -30,9 +33,3 @@ while(cap.isOpened()):  # check !
 # When everything is done release the capture
 cap.release()
 cv2.destroyAllWindows()
-
-
-"""
-Simply display the contents of the webcam with optional mirroring using OpenCV
-via the new Pythonic cv2 interface.  Press <esc> to quit.
-"""
