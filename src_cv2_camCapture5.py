@@ -34,7 +34,7 @@ while(cap.isOpened()):  # check !
 
         #th = cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_MEAN_C,\
                     #cv2.THRESH_BINARY,11,2)
-        th = cv2.GaussianBlur(th, (21, 21), 0)
+        #th = cv2.GaussianBlur(th, (21, 21), 0)
 
         th = cv2.adaptiveThreshold(th,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,\
                     cv2.THRESH_BINARY,91,1)
